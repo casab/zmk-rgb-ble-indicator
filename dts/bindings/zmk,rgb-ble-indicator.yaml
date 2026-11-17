@@ -1,0 +1,27 @@
+# Copyright (c) 2026 Engin Al
+# SPDX-License-Identifier: MIT
+
+description: |
+  When the active Bluetooth profile changes, light the active profile's area for `duration-ms`.
+  `leds` is split evenly into one area per profile in use (paired profiles plus the active one),
+  in profile order. Needs zmk-rgb-led-overlay.
+
+compatible: "zmk,rgb-ble-indicator"
+
+properties:
+  leds:
+    type: array
+    required: true
+    description: LED indexes in display order (e.g. left to right); split into one area per profile.
+  color-hsb:
+    type: array
+    default: [240, 100, 50]
+    description: Hue (0-360), saturation (0-100), brightness (0-100).
+  duration-ms:
+    type: int
+    default: 2000
+    description: How long the profile stays shown.
+  slot:
+    type: int
+    default: 3
+    description: zmk-rgb-led-overlay slot; higher slots are drawn over lower ones.
