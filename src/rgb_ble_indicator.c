@@ -64,6 +64,9 @@ static void show_profile(uint8_t active) {
     LOG_DBG("rgb ble indicator: profile %d, area %d of %d, LEDs %d-%d", active + 1, area + 1,
             areas, start, end - 1);
 
+    // A profile can change without a keypress (e.g. the AutoSwitch app), while the keyboard is
+    // idle: show anyway. The flash clears itself, so it can't keep the LEDs on.
+    zmk_led_overlay_set_show_when_idle(SLOT, true);
     zmk_led_overlay_clear(SLOT);
     for (size_t i = start; i < end; i++) {
         zmk_led_overlay_set(SLOT, leds[i], color);

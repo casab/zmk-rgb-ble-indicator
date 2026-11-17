@@ -9,7 +9,8 @@ and the active profile's area lights up for `duration-ms`. Profiles in use are t
 plus the active one when it's empty (you just selected it to pair). With two in use the keyboard
 is split in halves, with three in thirds, and so on.
 
-It is drawn on top of the normal underglow and needs
+It shows even while the keyboard is idle and the underglow has turned itself off, since an app
+can switch the profile without a keypress. It is drawn on top of the normal underglow and needs
 [zmk-rgb-led-overlay](https://github.com/casab/zmk-rgb-led-overlay).
 
 ## Add it to your zmk-config
